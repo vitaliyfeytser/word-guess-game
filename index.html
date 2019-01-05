@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+<body>
+
+    <!--NAVBAR-->
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand">Bootcamp Wheel of Fortune</a>
+        <form class="form-inline">
+            <input class="form-control mr-sm-2" type="text" placeholder="Guess Here" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="spin-button" onclick="spinFunction()">Spin</button>
+        </form>
+    </nav>
+
+    <!-- JUMBOTRON -->
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h2 class="display-4" id="blanks">Read the hint and try to guess that coding word.</h2>
+            <br>
+            <h1 class="display-4" id="blanks" style="text-align: center">_ _ _ BLANKS _ _ _</h1>
+            <p class="lead" style="text-align: center">Hint:</p>
+            <p class="lead" id="hint" style="text-align: center">A hint will be displayed here.</p>
+        </div>
+    </div>
+
+
+    <!-- SUCCESS ALERT -->
+    <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading">Well done!</h4>
+        <p>Aww yeah, you've successfully deciphered the word. Hit "Spin" again to try another!</p>
+        <hr>
+        <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+    </div>
+
+    <!-- TRY AGAIN ALERT -->
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Holy guacamole!</strong> You can try another word. Just hit "Spin".
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      
+      // PSUDOCODE FIRST
+  
+      // 1a. Announce max guess number as 13.
+  
+      // 1. prompt user for on.click spin
+      
+      // 2. create variable from userSpin
+      
+      // 3. choose one index from words
+  
+      // 4. print blanks numbered from index of userSpin
+  
+      // 5. print hint numbered from userSpin
+  
+      // 6. prompt user for key.up guess
+  
+      // 7. write user key.up guess below blanks
+  
+      // 8. compare user key.up to index of userSpin
+  
+      // 9. if key.up matches index of userSpin overwrite blank index with user key.up and itirate guessCount
+  
+      // 10. else play beep sound and itirate guess count
+  
+      // 11. track wins and losses
+
+      $(document).ready(function spinFunction() {
+
+        var words = [
+            "HTML", 
+            "CSS", 
+            "concatenation", 
+            "GitHub", 
+            "Repository"
+        ];
+
+        var hints = [
+            "Basic structure language", 
+            "A language to make things pretty", 
+            "A word for slapping two things together", 
+            "Where do put things that you need to get?", 
+            "That other word for storing your git'ns"
+        ];
+
+        var userHint = document.getElementById("hint");
+
+        document.onkeyup = function(event) {
+            userHint.textContent = (hints[4]);
+        };
+
+        // CHOOSE AN INDEX FOR ALL VARIABLES
+
+        var spinCounter = document.getElementById("spin-button"),
+            count = 0;
+        spinCounter.onclick = function() {
+            count += 1;
+            };
+
+
+        // for (var i = 0; i < letters.length; i++) {
+
+        // var userText = document.getElementById("user-text");
+
+        // Next, we give JavaScript a function to execute when onkeyup event fires.
+        // document.onkeyup = function(event) {
+        //     userText.textContent = event.key;
+        // };
+
+
+
+
+
+
+
+
+
+
+        // for(var i = 0; i >= words.length; i++) {
+            
+        // }
+
+        // for(var i = 0; i >= hints.length; i++) {
+
+        // }
+
+
+      });
+
+    </script>
+
+</body>
+</html>
