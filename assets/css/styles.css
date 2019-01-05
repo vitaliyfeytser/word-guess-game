@@ -1,0 +1,14 @@
+#word-to-guess {
+    text-align: center;
+    opacity: .25;
+}
+
+#dynamic-blanks {
+    text-align: center;
+    letter-spacing: .1em;
+}
+
+#blanks {
+    text-align: center;
+    letter-spacing: .1em;
+}
