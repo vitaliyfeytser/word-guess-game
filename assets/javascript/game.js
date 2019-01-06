@@ -26,6 +26,8 @@
       // 11. track wins and losses
 
     var words = [
+        "H", 
+        "HT", 
         "HTML", 
         "CSS", 
         "concatenation", 
@@ -33,15 +35,17 @@
         "Repository"
     ];
 
-    var blanks = [
-        "_ _ _ _", 
-        "_ _ _", 
-        "_ _ _ _ _ _ _ _ _ _", 
-        "_ _ _ _ _ _", 
-        "_ _ _ _ _ _ _ _ _ _"
-    ];
+    // var blanks = [
+    //     "_ _ _ _", 
+    //     "_ _ _", 
+    //     "_ _ _ _ _ _ _ _ _ _", 
+    //     "_ _ _ _ _ _", 
+    //     "_ _ _ _ _ _ _ _ _ _"
+    // ];
 
     var hints = [
+        "One Letter H",
+        "Two Letters HT",
         "Basic structure language.", 
         "A language to make things pretty.", 
         "A word for putting two strings one after another.", 
@@ -55,65 +59,146 @@
     var spinWord = document.getElementById("word-to-guess");
     var spinBlanks = document.getElementById("blanks");
     var spinHint = document.getElementById("hint");
-
     
-
+    
+    
     // CREATE A SPIN COUNTER BASED ON "WORDS" (HINTS' INDEX MATCHED WORDS')
-
+    
     var spinCounter = document.getElementById("spin-button"),
         count = 0;
     
     spinCounter.onclick = function() {
         if (count < words.length-1) {
-        count += 1;
+            count += 1;
         }
         else (count = 0);
-
+        
         console.log(count);
     };
+    
+
+
 
 
     // ITIRATE THROUGH THE INDEX OF ALL DISPLAY CATEGORIES BASED ON SPIN COUNT
 
     document.onclick = function() {
+        
 
         // MAKE CURRENT 'WORDS COUNT' INTO AN ARRAY
         var lettersArray = words[count].split("");
         console.log(lettersArray);
-
-        spinWord.textContent = (lettersArray);
-
+          
         // REPLACE ALL CHARACTERS OF 'WORDS' BY UNDERSCORES
-        spinBlanks.textContent = (words[count].replace(/./g, "_"));
+        spinWord.textContent = lettersArray.join("");
         
+        spinBlanks.textContent = lettersArray.join("").replace(/./g, "_");
+
         spinHint.textContent = (hints[count]);
+
+        var guessBox = document.getElementById("guess-box");
+        guessBox.textContent = null;
+        console.log(guessBox);
     };
 
  
 
-    // var wordsCount = words[count];
+    // RECIEVE AND COMPARE USER GUESSES TO INDEX OF LETTER-ARRAY
 
+    // var div = document.getElementById('divID');
 
+    // div.innerHTML += 'Extra stuff';
     
-    // var str = "How are you doing today?";
-    // var res = str.split(" ");
+    var guessBox = document.getElementById("guess-box");
+
+    document.onkeyup = function() {
+        
+        var userGuess = event.key;
+        console.log(userGuess);
+        
+
+        guessBox.textContent += userGuess;
+        console.log(guessBox);
+        
+        
+        
+        // MAKE CURRENT 'WORDS COUNT' INTO AN ARRAY
+        var lettersArray = words[count].split("");
+        var spinBlanksArray = words[count].split("");
+
+        // spinBlanks.textContent = null;
+
+        for (var i = 0; i < lettersArray.length; i++) {
+
+            // spinBlanks.textContent = lettersArray.join("").replace(/./g, "_");
+            
+            // for (var i = 0; i < userGuess.length; i++) {
+            // spinBlanks.textContent += "_"; 
+
+            var index = lettersArray.findIndex(userGuess => userGuess === userGuess);
+            lettersArray.splice(index, 1, userGuess);
+            console.log(lettersArray);
+
+            var spinBlanks = document.getElementById("blanks");
+            // spinBlanks.textContent = lettersArray.join("").replace(/./g, "_");
+            
+            
+            if (lettersArray[i] === userGuess) {
+                
+                var blanksIndex = spinBlanksArray.findIndex(userGuess => userGuess === userGuess);
+                spinBlanksArray.splice(blanksIndex, 1, userGuess);
+                // spinBlanks.textContent = userGuess;
 
 
-    var userGuess = document.getElementById("user-guess");
+            }else {
+                // spinBlanks.textContent += "_"; 
+                };
+            // };
+            };
 
-    var lettersArray = words[count].split("");
 
-    userGuess.onkeyup = function() {
+            // function contains(a, obj) {
+            //     for (var i = 0; i < a.length; i++) {
+            //         if (a[i] === obj) {
+            //             return true;
+            //         }
+            //     }
+            //     return false;
+            // }
 
-        if (userGuess === lettersArray) {
-            console.log(userGuess);
-            // REPLACE ALL CHARACTERS OF 'WORDS' BY UNDERSCORES EXCEPT 
-            spinBlanks.textContent = (words[count].replace(/./g, "!"));
-        }
-        else {
-            // REPLACE ALL CHARACTERS OF 'WORDS' BY UNDERSCORES 
-            spinBlanks.textContent = (words[count].replace(/./g, "?"));
-        }
+        // for (i = 0; i < lettersArray.length; i++) {
+        //     if (userGuess === lettersArray) {
+                
+        //         console.log("yep");
+        //     }
+        //     else {
+        //         console.log("nope");
+        //     }
+        // };
+
+        // if (userGuess === computerGuess) {
+        //     alert("Tie");
+        // }else if(userGuess === "p" && computerGuess === "p"){
+        //     alert("Tie");
+       
+        // }else if(userGuess === "p" && computerGuess === "r"){
+        //     alert("User win");
+        
+        // }else if(userGuess === "p" && computerGuess === "s"){
+        //     alert("Computer win");
+        
+
+
+
+        // if (userGuess === lettersArray) {
+        //     console.log(userGuess);
+        //     // REPLACE ALL CHARACTERS OF 'WORDS' BY UNDERSCORES EXCEPT 
+        //     spinBlanks.textContent = (words[count].replace(/./g, "!"));
+        // }
+        // else {
+        //     // REPLACE ALL CHARACTERS OF 'WORDS' BY UNDERSCORES 
+        //     spinBlanks.textContent = (words[count].replace(/./g, "?"));
+        // }
     };
 
 
@@ -141,5 +226,5 @@
       
       // To test
       
-    //   console.log(sword);
-
+    //   console.log(sword); 
+    //

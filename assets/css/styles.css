@@ -1,14 +1,21 @@
 #word-to-guess {
     text-align: center;
     opacity: .25;
+    letter-spacing: .3em;
 }
 
 #dynamic-blanks {
     text-align: center;
-    letter-spacing: .1em;
+    letter-spacing: .3em;
 }
 
 #blanks {
     text-align: center;
-    letter-spacing: .1em;
+    letter-spacing: .3em;
+}
+
+#guess-box {
+    text-align: center;
+    opacity: .25;
+    letter-spacing: .3em;
 }
