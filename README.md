@@ -24,6 +24,7 @@ git status
 git commit -m ""
 rmdir
 rm
+pwd
 
 
 WRITE OUT GAME STRUCTURE HERE:
